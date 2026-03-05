@@ -64,6 +64,65 @@ def subplot_categorical_columns_top(dataframe, top_n=20, hspace=1.2, wspace=0.4)
     fig.subplots_adjust(hspace=hspace, wspace=wspace)
 
     plt.show()
+    
+def subplot_numeric_columns(dataframe, columns):
+    """
+    Generates subplots with histograms and boxplots for each provided numeric column.
+
+    For each column:
+    - A histogram is displayed showing the frequency distribution.
+    - A boxplot is displayed to visually identify potential outliers.
+
+    The plots are organized in multiple rows, with two plots per row:
+    - Left column: Histogram
+    - Right column: Boxplot
+
+    Args:
+        dataframe : pandas.DataFrame
+            The DataFrame containing the numeric data.
+        
+        columns : list of str
+            List of numeric column names to visualize.
+
+    Returns:
+        None
+            The function directly displays the plots using matplotlib and seaborn.
+            It does not return any value.
+
+    Notes:
+    ------
+    - Column names in `columns` should correspond to numeric columns.
+    - The number of rows is automatically calculated based on the number of columns.
+    - Requires `matplotlib.pyplot` as `plt` and `seaborn` as `sns`.
+    - Histograms use 200 bins by default.
+    """
+
+    num_graphs = len(columns)
+
+    if num_graphs == 0:
+        print("No numeric columns were provided.")
+        return
+
+    # One row per numeric column (each row has 2 plots)
+    fig, axes = plt.subplots(num_graphs, 2, figsize=(15, num_graphs * 5))
+
+    # If only one column, axes needs reshaping
+    if num_graphs == 1:
+        axes = [axes]
+
+    for i, col in enumerate(columns):
+        # Histogram
+        sns.histplot(data=dataframe, x=col, ax=axes[i][0], bins=200)
+        axes[i][0].set_title(f'Distribution of {col}')
+        axes[i][0].set_xlabel(col)
+        axes[i][0].set_ylabel('Frequency')
+
+        # Boxplot
+        sns.boxplot(data=dataframe, x=col, ax=axes[i][1])
+        axes[i][1].set_title(f'Boxplot of {col}')
+
+    plt.tight_layout()
+    plt.show()
 
 
 
