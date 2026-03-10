@@ -158,7 +158,7 @@ pip install -r requirements.txt
 
 # 7. Dashboard
 
-
+![Flight Delay Dashboard](Dashboardscreenshot.png)
 
 ---
 
