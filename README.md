@@ -145,13 +145,18 @@ pip install -r requirements.txt
 # 6. Project Development 🛠️
 
 **1. Data acquisition:** Downloaded from Kaggle.
+
 **2. Folder & environment setup:** Virtual environment, clean folder structure.
+
 **3. Data cleaning & transformation:**
 - Joined flights, airports, and airlines datasets.
 - Checked missing values, removed irrelevant columns, filled gaps.
 - Created copies for safe manipulation.
+
 **4. Function creation:** Python scripts in SRC/ for reusable cleaning, EDA, metrics, and visualization.
+
 **5. Metric & KPI computation:** Cancellation rate, diversion rate, on-time performance, delay distributions, hub-level analysis.
+
 **6. Dashboard preparation:** Pivot tables and processed datasets ready for visualization.
 
 ---
